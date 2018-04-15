@@ -17,6 +17,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<List<News>>{
 
+    /* Tag for the log messages */
+    private static final String LOG_TAG = MainActivity.class.getName();
+
     /* Various initializer */
     private NewsAdapter newsAdapter;
     private RecyclerView recyclerView;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements
         newsAdapter.clearAll();
 
         // If there is a valid lis of {@link News}
-        if(data != null || !data.isEmpty()) {
+        if((data != null) || !data.isEmpty()) {
             newsAdapter.addAll(data);
         }
     }

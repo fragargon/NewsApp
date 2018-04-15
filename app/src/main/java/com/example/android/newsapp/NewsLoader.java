@@ -49,7 +49,8 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
             return null;
         }
         // Perform the network request, parse the response, and extract a list of news.
-        List<News> newsData = QueryUtils.fetchNewsData(queryUrl);
+        List<News> newsData;
+        newsData = QueryUtils.fetchNewsData(queryUrl);
         return newsData;
     }
 }
