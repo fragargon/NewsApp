@@ -116,8 +116,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
      * @param news is the data source of the adapter.
      */
     public void addAll(List<News> news) {
-        news.clear();
-        news.addAll(newsList);
+        newsList.clear();
+        newsList.addAll(news);
         notifyDataSetChanged();
     }
 }
