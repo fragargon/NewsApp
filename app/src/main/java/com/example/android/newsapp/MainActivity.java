@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Getting the UI and set the layout recyclerView.
         recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
 
         // Create a new adapter that takes an empty list of earthquakes as input
         if (newsList == null) newsList = new ArrayList<>();

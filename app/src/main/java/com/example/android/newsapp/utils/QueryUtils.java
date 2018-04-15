@@ -79,14 +79,14 @@ public class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(Constant.READ_TIMEOUT);
-            urlConnection.setConnectTimeout(Constant.CONNECT_TIMEOUT);
-            urlConnection.setRequestMethod(Constant.REQUEST_METHOD);
+            urlConnection.setReadTimeout(Constant.READ_TIMEOUT); // 10000 millisecond.
+            urlConnection.setConnectTimeout(Constant.CONNECT_TIMEOUT); // 15000 millisecond.
+            urlConnection.setRequestMethod(Constant.REQUEST_METHOD); // GET method.
             urlConnection.connect();
 
             // If the request is successful (code 200)
             // Read the input stream and parse the response.
-            if(urlConnection.getResponseCode() == Constant.RESPONSE_CODE) {
+            if(urlConnection.getResponseCode() == Constant.RESPONSE_CODE /*200*/) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readStreamResponse(inputStream);
             } else {

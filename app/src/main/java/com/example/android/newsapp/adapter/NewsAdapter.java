@@ -20,7 +20,7 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
-    // Store all the news in list.
+    // Store all the data news in list.
     private List<News> newsList;
     // This context we will use to inflate the layout.
     private Context context;
