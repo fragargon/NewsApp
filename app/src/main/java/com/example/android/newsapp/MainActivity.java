@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     /** Adapter for the List of News */
     private NewsAdapter newsAdapter;
+    private RecyclerView recyclerView;
+    private List<News> newsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Getting the UI and set the layout recyclerView.
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Create a new adapter that takes an empty list of earthquakes as input
-        newsAdapter = new NewsAdapter(this, new ArrayList<News>());
+        if (newsList == null) newsList = new ArrayList<>();
+        newsAdapter = new NewsAdapter(this, newsList);
 
         // Setting adapter to recycler view.
         recyclerView.setAdapter(newsAdapter);
