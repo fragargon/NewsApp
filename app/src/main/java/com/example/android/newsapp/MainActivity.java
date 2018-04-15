@@ -1,6 +1,7 @@
 package com.example.android.newsapp;
 
-import android.os.AsyncTask;
+import android.app.LoaderManager;
+import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,14 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import com.example.android.newsapp.adapter.NewsAdapter;
 import com.example.android.newsapp.model.Constant;
 import com.example.android.newsapp.model.News;
-import com.example.android.newsapp.utils.QueryUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        LoaderManager.LoaderCallbacks<List<News>>{
 
-    /** Adapter for the List of News */
+    /* Various initializer */
     private NewsAdapter newsAdapter;
     private RecyclerView recyclerView;
     private List<News> newsList;
@@ -26,63 +27,54 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Getting the UI and set the layout recyclerView.
+        /* Getting the UI and set the layout recyclerView. */
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        // Create a new adapter that takes an empty list of earthquakes as input
+        /* Create a new adapter that takes an empty list of earthquakes as input */
         if (newsList == null) newsList = new ArrayList<>();
         newsAdapter = new NewsAdapter(this, newsList);
 
-        // Setting adapter to recycler view.
+        /* Setting adapter to recycler view. */
         recyclerView.setAdapter(newsAdapter);
 
-        // Start the AsyncTask to fetch the earthquake data
-        NewsAsyncTask task = new NewsAsyncTask();
-        task.execute(Constant.BASE_URL);
+        // Get a reference to the LoaderManager, in order to interact with loaders.
+        LoaderManager loaderManager = getLoaderManager();
+        // Initialize the loader. Pass in the int ID constant
+        loaderManager.initLoader(Constant.NEWS_LOADER_ID, null, this);
     }
 
-    private class NewsAsyncTask extends AsyncTask<String, Void, List<News>>{
+    /**
+     * Instantiate and return a new Loader for the given ID.
+     */
+    @Override
+    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
+        // Create a new loader for the given URL
+        return new NewsLoader(this, Constant.BASE_URL);
+    }
 
-        /**
-         * Override this method to perform a computation on a background thread. The
-         * specified parameters are the parameters passed to {@link #execute}
-         * by the caller of this task.
-         * <p>
-         * This method can call {@link #publishProgress} to publish updates
-         * on the UI thread.
-         *
-         * @param urls The parameters of the task.
-         * @return A result, defined by the subclass of this task.
-         */
-        @Override
-        protected List<News> doInBackground(String... urls) {
-            // Don't perform the request if there are no URLs, or the first URL is null.
-            if (urls.length < 1 || urls[0] == null) {
-                return null;
-            }
-            List<News> result = QueryUtils.fetchNewsData(urls[0]);
-            return result;
+    /**
+     * Called when a previously created loader has finished its load.
+     */
+    @Override
+    public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
+        // Clear the adapter of previous news data.
+        newsAdapter.clearAll();
+
+        // If there is a valid lis of {@link News}
+        if(data != null || !data.isEmpty()) {
+            newsAdapter.addAll(data);
         }
+    }
 
-        /**
-         * <p>Runs on the UI thread after {@link #doInBackground}. The
-         * specified result is the value returned by {@link #doInBackground}.</p>
-         * <p>
-         * <p>This method won't be invoked if the task was cancelled.</p>
-         *
-         * @param data The result of the operation computed by {@link #doInBackground}.
-         */
-        @Override
-        protected void onPostExecute(List<News> data) {
-            // Clear the adapter of previous earthquake data
-            newsAdapter.clearAll();
-
-            // If there is a valid lis of {@link News}
-            if(data != null || !data.isEmpty()) {
-                newsAdapter.addAll(data);
-            }
-        }
+    /**
+     * Called when a previously created loader is being reset,
+     * and thus making its data unavailable.
+     */
+    @Override
+    public void onLoaderReset(Loader<List<News>> loader) {
+        // Loader reset, so clear out existing data.
+        newsAdapter.clearAll();
     }
 }

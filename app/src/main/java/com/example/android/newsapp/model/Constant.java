@@ -12,6 +12,9 @@ public class Constant {
     private Constant() {
     }
 
+    /* Constant value for the earthquake loader ID. */
+    public static final int NEWS_LOADER_ID = 1;
+
     // Http request params
     public static final int READ_TIMEOUT = 10000;
     public static final int CONNECT_TIMEOUT = 15000;
