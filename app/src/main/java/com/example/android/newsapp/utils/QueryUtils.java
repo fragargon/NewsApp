@@ -47,7 +47,8 @@ public class QueryUtils {
         }
 
         // Extract relevant fields from the JSON response.
-        List<News> newsList = extractResponseFromJson(jsonResponse);
+        List<News> newsList;
+        newsList = extractResponseFromJson(jsonResponse);
         // Return the list.
         return newsList;
     }

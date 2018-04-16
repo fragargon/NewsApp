@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.android.newsapp.adapter.NewsAdapter;
 import com.example.android.newsapp.model.Constant;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements
     /* Various initializer */
     private NewsAdapter newsAdapter;
     private RecyclerView recyclerView;
+    private TextView emptyView;
     private List<News> newsList;
 
     @Override
@@ -30,22 +33,36 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* Getting the UI and set the layout recyclerView. */
+        /* Getting the UI */
         recyclerView = findViewById(R.id.recycler_view);
+        emptyView = findViewById(R.id.empty_view);
+
+        /* set the layout recyclerView. */
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
         /* Create a new adapter that takes an empty list of earthquakes as input */
         if (newsList == null) newsList = new ArrayList<>();
         newsAdapter = new NewsAdapter(this, newsList);
-
         /* Setting adapter to recycler view. */
         recyclerView.setAdapter(newsAdapter);
+
+        emptyState(newsList);
 
         // Get a reference to the LoaderManager, in order to interact with loaders.
         LoaderManager loaderManager = getLoaderManager();
         // Initialize the loader. Pass in the int ID constant
         loaderManager.initLoader(Constant.NEWS_LOADER_ID, null, this);
+    }
+
+    private void emptyState(List<News> data) {
+        if(data.isEmpty()) {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        } else{
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
     }
 
     /**
@@ -65,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements
         // Clear the adapter of previous news data.
         newsAdapter.clearAll();
 
-        // If there is a valid lis of {@link News}
+        // If there is a valid list of {@link News}
         if((data != null) || !data.isEmpty()) {
             newsAdapter.addAll(data);
         }
