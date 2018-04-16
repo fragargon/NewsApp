@@ -47,21 +47,19 @@ public class MainActivity extends AppCompatActivity implements
         /* Setting adapter to recycler view. */
         recyclerView.setAdapter(newsAdapter);
 
-        emptyState(newsList);
-
         // Get a reference to the LoaderManager, in order to interact with loaders.
         LoaderManager loaderManager = getLoaderManager();
         // Initialize the loader. Pass in the int ID constant
         loaderManager.initLoader(Constant.NEWS_LOADER_ID, null, this);
     }
 
-    private void emptyState(List<News> data) {
-        if(data.isEmpty()) {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyView.setVisibility(View.GONE);
-        } else{
+    private void setEmptyView(List<News> data) {
+        if(data.size() == 0) {
             recyclerView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
+        } else{
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
         }
     }
 
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
+        setEmptyView(data);
         // Clear the adapter of previous news data.
         newsAdapter.clearAll();
 
