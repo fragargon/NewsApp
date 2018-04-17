@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <!-- Empty view is only visible when the list has no items. --> -->
+    <!-- Empty view is only visible when the list has no items. -->
     <LinearLayout
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
