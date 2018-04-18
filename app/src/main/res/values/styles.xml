@@ -9,4 +9,12 @@
         <item name="cardViewStyle">@style/CardView</item>
     </style>
 
+    <!-- TextView style noData -->
+    <style name="no_data">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/colorNoData</item>
+    </style>
+
 </resources>

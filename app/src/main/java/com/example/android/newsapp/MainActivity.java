@@ -4,6 +4,7 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.example.android.newsapp.adapter.EmptyRecyclerView;
 import com.example.android.newsapp.adapter.NewsAdapter;
 import com.example.android.newsapp.model.Constant;
 import com.example.android.newsapp.model.News;
+import com.example.android.newsapp.utils.QueryUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements
     private TextView tv2;
     private ImageView imageView;
     private View emptyView;
+    private View loadingSpinner;
     private List<News> newsList;
 
     @Override
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements
 
         /* set the layout recyclerView. */
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
 
         /* Create a new adapter that takes an empty list of earthquakes as input */
@@ -53,20 +57,41 @@ public class MainActivity extends AppCompatActivity implements
         /* Setting adapter to recycler view. */
         recyclerView.setAdapter(newsAdapter);
 
-        // Get a reference to the LoaderManager, in order to interact with loaders.
-        LoaderManager loaderManager = getLoaderManager();
-        // Initialize the loader. Pass in the int ID constant
-        loaderManager.initLoader(Constant.NEWS_LOADER_ID, null, this);
+        // If there is a network connection, fetch data
+        if (QueryUtils.isConnected(this)) {
+            // Get a reference to the LoaderManager, in order to interact with loaders.
+            LoaderManager loaderManager = getLoaderManager();
+            // Initialize the loader. Pass in the int ID constant
+            loaderManager.initLoader(Constant.NEWS_LOADER_ID, null, this);
+            // Otherwise, display error
+        } else {
+            upDateViewNoData();
+        }
     }
 
+    // casting the Views to display.
     private void initViews () {
-        // casting the Views.
         recyclerView = findViewById(R.id.recycler_view);
         emptyView = findViewById(R.id.empty_view);
         tv1 = findViewById(R.id.text_view_empty1);
         tv2 = findViewById(R.id.text_view_empty2);
         imageView = findViewById(R.id.image_view_empty);
+        loadingSpinner = findViewById(R.id.loading_spinner);
 
+    }
+
+    // This method set empty state text to display.
+    private void upDateViewNoData() {
+        loadingSpinner.setVisibility(View.GONE);
+        tv1.setText(R.string.no_data);
+        imageView.setImageResource(R.drawable.nodatafound);
+        // Check if connected is true display text no data.
+        // else no connected to internet display text no connection.
+        if(QueryUtils.isConnected(this)) {
+            tv2.setText(R.string.no_data_1);
+        } else {
+            tv2.setText(R.string.no_internet_connection);
+        }
     }
 
     /**
@@ -83,16 +108,15 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
-        // Set empty state text to display "No news information found…"
-        tv1.setText(R.string.no_data);
-        tv2.setText(R.string.no_data_1);
-        imageView.setImageResource(R.drawable.nodatafound);
+
         // Clear the adapter of previous news data.
         newsAdapter.clearAll();
 
         // If there is a valid list of {@link News}
-        if((data != null) || !data.isEmpty()) {
+        if ((data != null) && !data.isEmpty()) {
             newsAdapter.addAll(data);
+        } else { // set empty state
+            upDateViewNoData();
         }
     }
 

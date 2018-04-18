@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NewsApp</string>
     <!-- Empty views -->
-    <string name="no_data">OooooPs</string>
-    <string name="no_data_1">No news information found…</string>
+    <string name="no_data"><b>OooooPs</b></string>
+    <string name="no_data_1"><b>no News information found…</b></string>
+    <string name="no_internet_connection"><b>No Internet Connection</b></string>
 </resources>

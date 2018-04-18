@@ -1,5 +1,8 @@
 package com.example.android.newsapp.utils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -34,9 +37,28 @@ public class QueryUtils {
     private QueryUtils() {
     }
 
+    /**
+     * Ths method (function) for checking internet connection.
+     * @param context of the app.
+     * @return true if internet connection is present else return false
+     */
+    public static boolean isConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
+    }
+
     public static List<News> fetchNewsData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
+
+        // test spinnerLoading delayed HttpRequest (slow connection)
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // Perform HTTP request to the URL and receive a JSON response.
         String jsonResponse = null;
