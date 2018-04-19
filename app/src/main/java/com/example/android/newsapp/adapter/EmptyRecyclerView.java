@@ -17,8 +17,10 @@ public class EmptyRecyclerView extends RecyclerView {
 
     private View emptyView;
 
-
-
+    /**
+     * Calls checkIfEmpty every time a changed occurs and
+     *  observe the content of the adapter.
+     */
     final private AdapterDataObserver observer = new AdapterDataObserver() {
         @Override
         public void onChanged() {
@@ -88,6 +90,10 @@ public class EmptyRecyclerView extends RecyclerView {
         checkIfEmpty();
     }
 
+    /**
+     * Set an emptyView
+     * @param emptyView refers to the adapter empty state.
+     */
     public void setEmptyView(View emptyView) {
         this.emptyView = emptyView;
         checkIfEmpty();

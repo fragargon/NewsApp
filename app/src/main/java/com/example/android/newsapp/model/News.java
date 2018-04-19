@@ -13,9 +13,10 @@ public class News {
     private String webTitle;
     private String webPublicationDate;
     private String webUrl;
+    private String author;
 
     /**
-     *
+     * Defaut constructor {@link News} object.
      * @param sectionName is the sectionName name for news.
      * @param webTitle is the webTitle of the news.
      * @param webPublicationDate is the publication's webPublicationDate of the news.
@@ -31,7 +32,7 @@ public class News {
 
     /**
      *
-     * @return the string of the sectionName name.
+     * @return the string of the section's name.
      */
     public String getSectionName() {
         return sectionName;
@@ -39,7 +40,7 @@ public class News {
 
     /**
      *
-     * @return the string of the webTitle name.
+     * @return the string of the webTitle's name.
      */
     public String getWebTitle() {
         return webTitle;
@@ -47,7 +48,7 @@ public class News {
 
     /**
      *
-     * @return the long of the webPublicationDate
+     * @return the string of the webPublication's date
      */
     public String getWebPublicationDate() {
         return webPublicationDate;
@@ -55,10 +56,18 @@ public class News {
 
     /**
      *
-     * @return the string of the webUrl name.
+     * @return the string of the webUrl's name.
      */
     public String getWebUrl() {
         return webUrl;
+    }
+
+    /**
+     *
+     * @return the string of the author's name
+     */
+    public String getAuthor() {
+        return author;
     }
 
     /** Return the string representation of the (@link News) object */
@@ -69,6 +78,7 @@ public class News {
                 "webTitle='" + webTitle + '\'' +
                 "webPublicationDate='" + webPublicationDate + '\'' +
                 "webUrl='" + webUrl + '\'' +
+                "author='" + author + '\'' +
                 '}';
     }
 

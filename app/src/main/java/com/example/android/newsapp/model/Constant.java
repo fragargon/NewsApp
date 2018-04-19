@@ -22,7 +22,7 @@ public class Constant {
     public static final String REQUEST_METHOD = "GET";
 
     // Guardian Api end point
-    public static final String BASE_URL = "http://content.guardianapis.com/search?api-key=test";
+    public static final String BASE_URL = "http://content.guardianapis.com/search?show-tags=contributor&from-date=2018-04-12&to-date=2018-04-12&order-by=newest&show-fields=all&page-size=200&api-key=test";
 
     /* Extract the key associated with the JSONObject */
     public static final String JSON_KEY_RESPONSE = "response";

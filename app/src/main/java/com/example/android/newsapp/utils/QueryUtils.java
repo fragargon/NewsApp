@@ -45,6 +45,7 @@ public class QueryUtils {
     public static boolean isConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
@@ -53,7 +54,7 @@ public class QueryUtils {
         // Create URL object
         URL url = createUrl(requestUrl);
 
-        // test spinnerLoading delayed HttpRequest (slow connection)
+        // TODO remove test spinnerLoading delayed HttpRequest (slow connection)
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

@@ -1,6 +1,8 @@
 package com.example.android.newsapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +14,11 @@ import android.widget.TextView;
 import com.example.android.newsapp.R;
 import com.example.android.newsapp.model.News;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * this is a customer adapter to handle the recycler views
@@ -90,17 +96,55 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        News currentNews = newsList.get(position);
+        // Find news at the given osition in the list
+        final News currentNews = newsList.get(position);
+        // Set section name to display.
         holder.tvSection.setText(currentNews.getSectionName());
+        // Set title name to display.
         holder.tvTitle.setText(currentNews.getWebTitle());
-        holder.tvDate.setText(String.valueOf(currentNews.getWebPublicationDate()));
+        // Set the date to display.
+        String date = currentNews.getWebPublicationDate();
+        String newsDate = formatDate(date);
+        holder.tvDate.setText(newsDate);
+        //set the author's name to display.
         holder.tvUrl.setText(currentNews.getWebUrl());
+        // set an OnclickListener on that view.
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                onClickWebUrl(currentNews.getWebUrl());
             }
         });
+    }
+
+    /**
+     * This method create an implicit web browser intent.
+     * @param openUrl is the web url of the item click
+     */
+    private void onClickWebUrl(String openUrl) {
+        Uri webPage = Uri.parse(openUrl);
+        Intent i = new Intent(Intent.ACTION_VIEW, webPage);
+        if(i.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(i);
+        }
+    }
+
+    /**
+     * This method format the date into a specific pattern.
+     * @param dateObj is the web publication date.
+     * @return a date formatted's string.
+     */
+    private String formatDate(String dateObj) {
+        String dateFormatted = "";
+        SimpleDateFormat inputDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
+        SimpleDateFormat outputDate = new SimpleDateFormat("EE dd MM YYYY", Locale.getDefault());
+        try {
+            Date newDate = inputDate.parse(dateObj);
+            return outputDate.format(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateFormatted;
     }
 
     /**
