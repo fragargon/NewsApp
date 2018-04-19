@@ -4,4 +4,6 @@
     <string name="no_data"><b>OooooPs</b></string>
     <string name="no_data_1"><b>no News information found…</b></string>
     <string name="no_internet_connection"><b>No Internet Connection</b></string>
+    <!-- author string -->
+    <string name="by_author">by %1$s</string>
 </resources>

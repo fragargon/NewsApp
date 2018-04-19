@@ -73,7 +73,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         private TextView tvSection;
         private TextView tvTitle;
         private TextView tvDate;
-        private TextView tvUrl;
+        private TextView tvAuthor;
+
 
         /**
          * Represents the views of RecyclerView.
@@ -85,7 +86,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             tvSection = itemNews.findViewById(R.id.item_section);
             tvTitle = itemNews.findViewById(R.id.item_title);
             tvDate = itemNews.findViewById(R.id.item_date);
-            tvUrl = itemNews.findViewById(R.id.item_url);
+            tvAuthor = itemNews.findViewById(R.id.item_author);
         }
     }
 
@@ -107,7 +108,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         String newsDate = formatDate(date);
         holder.tvDate.setText(newsDate);
         //set the author's name to display.
-        holder.tvUrl.setText(currentNews.getWebUrl());
+        String author = context.getString(R.string.by_author, currentNews.getAuthor());
+        holder.tvAuthor.setText(author);
         // set an OnclickListener on that view.
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
