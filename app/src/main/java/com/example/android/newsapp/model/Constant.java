@@ -31,4 +31,7 @@ public class Constant {
     public static final String JSON_KEY_SECTION_NAME = "sectionName";
     public static final String JSON_KEY_WEB_PUBLICATION_DATE = "webPublicationDate";
     public static final String JSON_KEY_WEB_URL = "webUrl";
+    public static final String JSON_KEY_TAGS = "tags";
+    public static final String JSON_KEY_AUTHOR = "webTitle";
+
 }

@@ -54,13 +54,6 @@ public class QueryUtils {
         // Create URL object
         URL url = createUrl(requestUrl);
 
-        // TODO remove test spinnerLoading delayed HttpRequest (slow connection)
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         // Perform HTTP request to the URL and receive a JSON response.
         String jsonResponse = null;
         try {
@@ -160,6 +153,9 @@ public class QueryUtils {
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         try {
+
+            String webTitle;
+            String author = "";
             // Create a JSONObject from the JSON response string.
             JSONObject baseJsonResponse = new JSONObject(newsJson);
             // Extract the JSONObject associated with the key string "response"
@@ -172,16 +168,27 @@ public class QueryUtils {
                 // Get a single newsList at index i
                 JSONObject currentNews = resultsArray.getJSONObject(i);
                 // Extract the value for the key called "webTitle"
-                String webTitle = currentNews.getString(Constant.JSON_KEY_WEB_TITLE);
+                webTitle = currentNews.getString(Constant.JSON_KEY_WEB_TITLE);
                 // Extract the value for the key called "sectionName"
                 String sectionName = currentNews.getString(Constant.JSON_KEY_SECTION_NAME);
                 // Extract the value for the key called "webPublicationDate"
                 String webPublicationDate = currentNews.getString(Constant.JSON_KEY_WEB_PUBLICATION_DATE);
                 // Extract the value for the key called "webUrl"
                 String webUrl = currentNews.getString(Constant.JSON_KEY_WEB_URL);
+                // Extract the JSONArray associated with the key "tags"
+                JSONArray tagsArray = currentNews.getJSONArray(Constant.JSON_KEY_TAGS);
+                if(tagsArray.length() > 0) {
+                    for(int j = 0; j < 1; j++) {
+                        // extract the value for the key "webTitle" (author)
+                        JSONObject authorObj = tagsArray.getJSONObject(j);
+                        if(authorObj.has(Constant.JSON_KEY_AUTHOR)) {
+                            author = authorObj.getString(Constant.JSON_KEY_AUTHOR);
+                        }
+                    }
+                }
 
                 // Create a new {@Link News} object
-                News news = new News(sectionName, webTitle,webPublicationDate, webUrl);
+                News news = new News(sectionName, webTitle,webPublicationDate, webUrl, author);
                 newsList.add(news);
             }
         } catch (JSONException e) {

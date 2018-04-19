@@ -22,12 +22,13 @@ public class News {
      * @param webPublicationDate is the publication's webPublicationDate of the news.
      * @param webUrl is the name's webUrl of the news.
      */
-    public News(String sectionName, String webTitle, String webPublicationDate, String webUrl) {
+    public News(String sectionName, String webTitle, String webPublicationDate, String webUrl, String author) {
 
         this.sectionName = sectionName;
         this.webTitle = webTitle;
         this.webPublicationDate = webPublicationDate;
         this.webUrl = webUrl;
+        this.author = author;
     }
 
     /**
