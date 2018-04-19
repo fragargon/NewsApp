@@ -99,17 +99,31 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Find news at the given osition in the list
         final News currentNews = newsList.get(position);
+
         // Set section name to display.
+        holder.tvSection.setTextAppearance(context.getApplicationContext(), R.style.section_style);
         holder.tvSection.setText(currentNews.getSectionName());
+
         // Set title name to display.
+        holder.tvTitle.setTextAppearance(context.getApplicationContext(), R.style.title_style);
         holder.tvTitle.setText(currentNews.getWebTitle());
+
         // Set the date to display.
         String date = currentNews.getWebPublicationDate();
         String newsDate = formatDate(date);
+        holder.tvDate.setTextAppearance(context.getApplicationContext(), R.style.date_style);
         holder.tvDate.setText(newsDate);
+
         //set the author's name to display.
         String author = context.getString(R.string.by_author, currentNews.getAuthor());
-        holder.tvAuthor.setText(author);
+        String noAuthor = context.getString(R.string.by_Anonymous);
+        holder.tvAuthor.setTextAppearance(context.getApplicationContext(), R.style.author_style);
+        if(currentNews.getAuthor() != null) {
+            holder.tvAuthor.setText(author);
+        } else {
+            holder.tvAuthor.setText(noAuthor);
+        }
+
         // set an OnclickListener on that view.
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

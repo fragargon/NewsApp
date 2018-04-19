@@ -17,7 +17,7 @@
         android:layout_margin="@dimen/card_view_margin"
         android:foreground="?android:attr/selectableItemBackground">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -25,33 +25,35 @@
 
             <TextView
                 android:id="@+id/item_section"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 tools:text="The sectionName" />
 
             <TextView
                 android:id="@+id/item_title"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="@dimen/card_view_margin"
+                android:layout_marginBottom="@dimen/card_view_margin"
+                android:layout_below="@id/item_section"
                 tools:text="The webTitle" />
 
             <TextView
                 android:id="@+id/item_date"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 tools:text="The webPublicationDate" />
 
             <TextView
                 android:id="@+id/item_author"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:text="The webUrl" />
+                android:layout_below="@id/item_title"
+                tools:text="The author" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 

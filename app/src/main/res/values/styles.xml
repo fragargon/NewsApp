@@ -17,4 +17,28 @@
         <item name="android:textColor">@color/colorNoData</item>
     </style>
 
+    <!-- TextView Title -->
+    <style name="title_style">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- TextView Date -->
+    <style name="date_style">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/colorNoData</item>
+    </style>
+
+    <!-- TextView section -->
+    <style name="section_style">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <!-- TextView author -->
+    <style name="author_style">
+        <item name="android:textStyle">italic</item>
+    </style>
+
 </resources>
