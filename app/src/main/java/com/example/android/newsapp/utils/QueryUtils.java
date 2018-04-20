@@ -155,7 +155,11 @@ public class QueryUtils {
         try {
 
             String webTitle;
-            String author = "";
+            String sectionName;
+            String webPublicationDate;
+            String webUrl;
+            String thumbnail = "";
+            String author= "";
             // Create a JSONObject from the JSON response string.
             JSONObject baseJsonResponse = new JSONObject(newsJson);
             // Extract the JSONObject associated with the key string "response"
@@ -170,11 +174,20 @@ public class QueryUtils {
                 // Extract the value for the key called "webTitle"
                 webTitle = currentNews.getString(Constant.JSON_KEY_WEB_TITLE);
                 // Extract the value for the key called "sectionName"
-                String sectionName = currentNews.getString(Constant.JSON_KEY_SECTION_NAME);
+                sectionName = currentNews.getString(Constant.JSON_KEY_SECTION_NAME);
                 // Extract the value for the key called "webPublicationDate"
-                String webPublicationDate = currentNews.getString(Constant.JSON_KEY_WEB_PUBLICATION_DATE);
+                webPublicationDate = currentNews.getString(Constant.JSON_KEY_WEB_PUBLICATION_DATE);
                 // Extract the value for the key called "webUrl"
-                String webUrl = currentNews.getString(Constant.JSON_KEY_WEB_URL);
+                webUrl = currentNews.getString(Constant.JSON_KEY_WEB_URL);
+                // Extract the JSONObject for the key value "fields"
+                JSONObject thumbObj = currentNews.getJSONObject(Constant.JSON_KEY_FIELDS);
+                // Extract the thumbnail for the key value "thumbnail"
+                // Throw an exception if one or more thumbnail is missing
+                try {
+                    thumbnail = thumbObj.getString(Constant.JSON_KEY_THUMBNAIL);
+                } catch (JSONException e) {
+                    Log.e(LOG_TAG, "Missing one or more thumbnail JSONObject");
+                }
                 // Extract the JSONArray associated with the key "tags"
                 JSONArray tagsArray = currentNews.getJSONArray(Constant.JSON_KEY_TAGS);
                 if(tagsArray.length() > 0) {
@@ -188,7 +201,7 @@ public class QueryUtils {
                 }
 
                 // Create a new {@Link News} object
-                News news = new News(sectionName, webTitle,webPublicationDate, webUrl, author);
+                News news = new News(sectionName, webTitle,webPublicationDate, webUrl, author, thumbnail);
                 newsList.add(news);
             }
         } catch (JSONException e) {

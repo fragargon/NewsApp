@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.android.newsapp.R;
 import com.example.android.newsapp.model.News;
 
@@ -74,6 +76,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         private TextView tvTitle;
         private TextView tvDate;
         private TextView tvAuthor;
+        private ImageView thumbnail;
 
 
         /**
@@ -87,6 +90,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             tvTitle = itemNews.findViewById(R.id.item_title);
             tvDate = itemNews.findViewById(R.id.item_date);
             tvAuthor = itemNews.findViewById(R.id.item_author);
+            thumbnail = itemNews.findViewById(R.id.item_thumbnail);
         }
     }
 
@@ -114,7 +118,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.tvDate.setTextAppearance(context.getApplicationContext(), R.style.date_style);
         holder.tvDate.setText(newsDate);
 
-        //set the author's name to display.
+        // set the author's name to display.
         String author = context.getString(R.string.by_author, currentNews.getAuthor());
         String noAuthor = context.getString(R.string.by_Anonymous);
         holder.tvAuthor.setTextAppearance(context.getApplicationContext(), R.style.author_style);
@@ -122,6 +126,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             holder.tvAuthor.setText(author);
         } else {
             holder.tvAuthor.setText(noAuthor);
+        }
+
+        // set the thumbnail to display
+        if(currentNews.getThumbnail() == null) {
+            holder.thumbnail.setVisibility(View.GONE);
+        } else {
+            Glide.with(context).load(currentNews.getThumbnail()).override(400, 300)
+                    .centerCrop().into(holder.thumbnail);
         }
 
         // set an OnclickListener on that view.

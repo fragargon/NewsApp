@@ -14,21 +14,26 @@ public class News {
     private String webPublicationDate;
     private String webUrl;
     private String author;
+    private String thumbnail;
 
     /**
      * Defaut constructor {@link News} object.
      * @param sectionName is the sectionName name for news.
      * @param webTitle is the webTitle of the news.
      * @param webPublicationDate is the publication's webPublicationDate of the news.
-     * @param webUrl is the name's webUrl of the news.
+     * @param webUrl is the webUrl's name of the news.
+     * @param author is the author's name of the news.
+     * @param thumbnail is the image's url of the news.
      */
-    public News(String sectionName, String webTitle, String webPublicationDate, String webUrl, String author) {
+    public News(String sectionName, String webTitle, String webPublicationDate, String webUrl,
+                String author, String thumbnail) {
 
         this.sectionName = sectionName;
         this.webTitle = webTitle;
         this.webPublicationDate = webPublicationDate;
         this.webUrl = webUrl;
         this.author = author;
+        this.thumbnail = thumbnail;
     }
 
     /**
@@ -71,6 +76,14 @@ public class News {
         return author;
     }
 
+    /**
+     *
+     * @return the string of the thumbnail's url
+     */
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
     /** Return the string representation of the (@link News) object */
     @Override
     public String toString() {
@@ -80,6 +93,7 @@ public class News {
                 "webPublicationDate='" + webPublicationDate + '\'' +
                 "webUrl='" + webUrl + '\'' +
                 "author='" + author + '\'' +
+                "thumbnail='" + thumbnail + '\'' +
                 '}';
     }
 
