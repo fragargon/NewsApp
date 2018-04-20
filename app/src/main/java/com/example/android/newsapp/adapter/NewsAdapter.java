@@ -165,7 +165,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     private String formatDate(String dateObj) {
         String dateFormatted = "";
         SimpleDateFormat inputDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
-        SimpleDateFormat outputDate = new SimpleDateFormat("EE dd MM YYYY", Locale.getDefault());
+        SimpleDateFormat outputDate = new SimpleDateFormat("EEEE, dd.MM.YYYY", Locale.getDefault());
         try {
             Date newDate = inputDate.parse(dateObj);
             return outputDate.format(newDate);
