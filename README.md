@@ -37,6 +37,6 @@ ____________
 
 NewsApp stage1 - NoData
 
-![Alt Text](https://github.com/fragargon/ScoreKeeper/raw/master/newsApp_stage_1.jpg)![Alt Text](https://github.com/fragargon/ScoreKeeper/raw/master/newsApp_stage_1_no_data.jpg)
+![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1_no_data.jpg)
 
 
