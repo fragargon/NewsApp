@@ -1,11 +1,14 @@
 package com.example.android.newsapp;
 
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -69,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    // casting the Views to display.
+    /**
+     * This method castings the activity's views.
+     */
     private void initViews () {
         recyclerView = findViewById(R.id.recycler_view);
         emptyView = findViewById(R.id.empty_view);
@@ -80,12 +85,15 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    // This method set empty state text to display.
+    /**
+     * This method update the views when no dat or
+     * internet connection are available.
+     */
     private void upDateViewNoData() {
         loadingSpinner.setVisibility(View.GONE);
         tv1.setText(R.string.no_data);
         imageView.setImageResource(R.drawable.nodatafound);
-        // Check if connected is true display text no data.
+        // Check if connected is true, display text if no data.
         // else no connected to internet display text no connection.
         if(QueryUtils.isConnected(this)) {
             tv2.setText(R.string.no_data_1);
@@ -128,5 +136,30 @@ public class MainActivity extends AppCompatActivity implements
     public void onLoaderReset(Loader<List<News>> loader) {
         // Loader reset, so clear out existing data.
         newsAdapter.clearAll();
+    }
+
+    /**
+     * @param menu The options menu which display the menu item.
+     * @return true for the menu to be displayed;
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+
+    /**
+     * @param item The menu item that was selected.
+     * @return boolean Return true to allow
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
