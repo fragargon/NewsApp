@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        app:cardCornerRadius="@dimen/card_view_corner"
-        android:layout_margin="@dimen/card_view_margin"
+        app:cardCornerRadius="@dimen/dimen_common_4"
+        android:layout_margin="@dimen/dimen_common_8"
         android:foreground="?android:attr/selectableItemBackground">
 
         <RelativeLayout
@@ -41,8 +41,8 @@
                 android:id="@+id/item_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/card_view_margin"
-                android:layout_marginBottom="@dimen/card_view_margin"
+                android:layout_marginTop="@dimen/dimen_common_8"
+                android:layout_marginBottom="@dimen/dimen_common_8"
                 android:layout_below="@id/item_section"
                 android:orientation="horizontal">
 
