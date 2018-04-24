@@ -194,8 +194,10 @@ public class QueryUtils {
                     for(int j = 0; j < 1; j++) {
                         // extract the value for the key "webTitle" (author)
                         JSONObject authorObj = tagsArray.getJSONObject(j);
-                        if(authorObj.has(Constant.JSON_KEY_AUTHOR)) {
+                        try {
                             author = authorObj.getString(Constant.JSON_KEY_AUTHOR);
+                        } catch (JSONException e) {
+                            Log.e(LOG_TAG, "Missing one or more author's name JSONObject");
                         }
                     }
                 }

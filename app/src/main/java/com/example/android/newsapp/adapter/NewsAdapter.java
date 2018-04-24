@@ -105,22 +105,24 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         final News currentNews = newsList.get(position);
 
         // Set section name to display.
+        final String section = currentNews.getSectionName();
         holder.tvSection.setTextAppearance(context.getApplicationContext(), R.style.section_style);
-        holder.tvSection.setText(currentNews.getSectionName());
+        holder.tvSection.setText(section);
 
         // Set title name to display.
+        final String title = currentNews.getWebTitle();
         holder.tvTitle.setTextAppearance(context.getApplicationContext(), R.style.title_style);
-        holder.tvTitle.setText(currentNews.getWebTitle());
+        holder.tvTitle.setText(title);
 
         // Set the date to display.
-        String date = currentNews.getWebPublicationDate();
-        String newsDate = formatDate(date);
+        final String date = currentNews.getWebPublicationDate();
+        final String newsDate = formatDate(date);
         holder.tvDate.setTextAppearance(context.getApplicationContext(), R.style.date_style);
         holder.tvDate.setText(newsDate);
 
         // set the author's name to display.
-        String author = context.getString(R.string.by_author, currentNews.getAuthor());
-        String noAuthor = context.getString(R.string.by_Anonymous);
+        final String author = context.getString(R.string.by_author, currentNews.getAuthor());
+        final String noAuthor = context.getString(R.string.by_Anonymous);
         holder.tvAuthor.setTextAppearance(context.getApplicationContext(), R.style.author_style);
         if(currentNews.getAuthor() != null) {
             holder.tvAuthor.setText(author);
@@ -129,10 +131,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         }
 
         // set the thumbnail to display
-        if(currentNews.getThumbnail() == null) {
+        final String thumbnail = currentNews.getThumbnail();
+        if(thumbnail.equals("")) {
             holder.thumbnail.setVisibility(View.GONE);
         } else {
-            Glide.with(context).load(currentNews.getThumbnail()).override(400, 300)
+            Glide.with(context).load(thumbnail).override(400, 300)
                     .centerCrop().into(holder.thumbnail);
         }
 
