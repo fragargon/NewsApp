@@ -3,7 +3,10 @@ package com.example.android.newsapp;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -108,8 +111,27 @@ public class MainActivity extends AppCompatActivity implements
      */
     @Override
     public Loader<List<News>> onCreateLoader(int id, Bundle args) {
+
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        // getString retrieve a String value for the max News item
+        String maxNews = sharedPreferences.getString(
+                getString(R.string.settings_max_news_key),
+                getString(R.string.settings_max_news_default));
+
+        // parse breaks apart the URI string
+        Uri baseUri = Uri.parse(Constant.BASE_URL);
+        // buildUpon prepares the base Uri
+        Uri.Builder builder = baseUri.buildUpon();
+        // append query parameter
+        builder.appendQueryParameter(Constant.KEY_SHOW_TAGS, Constant.KEY_CONTRIBUTOR);
+        builder.appendQueryParameter(Constant.KEY_ORDER_BY, Constant.KEY_NEWEST);
+        builder.appendQueryParameter(Constant.KEY_SHOW_FIELD, Constant.KEY_ALL);
+        builder.appendQueryParameter(Constant.KEY_PAGE_SIZE, maxNews);
+        builder.appendQueryParameter(Constant.API_KEY, Constant.KEY_TEST);
+
         // Create a new loader for the given URL
-        return new NewsLoader(this, Constant.BASE_URL);
+        return new NewsLoader(this, builder.toString());
     }
 
     /**

@@ -12,19 +12,30 @@ public class Constant {
     private Constant() {
     }
 
-    /* Constant value for the earthquake loader ID. */
+    // Constant value for the earthquake loader ID.
     public static final int NEWS_LOADER_ID = 1;
 
-    // Http request params
+    // Http request params.
     public static final int READ_TIMEOUT = 10000;
     public static final int CONNECT_TIMEOUT = 15000;
     public static final int RESPONSE_CODE = 200;
     public static final String REQUEST_METHOD = "GET";
 
     // Guardian Api end point
-    public static final String BASE_URL = "http://content.guardianapis.com/search?show-tags=contributor&order-by=newest&show-fields=all&page-size=200&api-key=test";
+    public static final String BASE_URL = "http://content.guardianapis.com/search?";
 
-    /* Extract the key associated with the JSONObject */
+    // Query Uri builder
+    public static final String KEY_SHOW_TAGS = "show-tags";
+    public static final String KEY_CONTRIBUTOR = "contributor";
+    public static final String KEY_ORDER_BY = "order-by";
+    public static final String KEY_NEWEST = "newest";
+    public static final String KEY_SHOW_FIELD = "show-fields";
+    public static final String KEY_ALL = "all";
+    public static final String KEY_PAGE_SIZE = "page-size";
+    public static final String API_KEY = "api-key";
+    public static final String KEY_TEST = "test";
+
+    // Extract the key associated with the JSONObject
     public static final String JSON_KEY_RESPONSE = "response";
     public static final String JSON_KEY_RESULTS = "results";
     public static final String JSON_KEY_WEB_TITLE = "webTitle";
