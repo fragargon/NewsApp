@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.android.newsapp.adapter.EmptyRecyclerView;
 import com.example.android.newsapp.adapter.NewsAdapter;
+import com.example.android.newsapp.loader.NewsLoader;
 import com.example.android.newsapp.model.Constant;
 import com.example.android.newsapp.model.News;
 import com.example.android.newsapp.utils.QueryUtils;

@@ -10,8 +10,8 @@
     <!-- settings menu -->
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">News Settings</string>
-    <!-- preference label-->
-    <string name="settings_max_news_label">set maximum news</string>
-    <string name="settings_max_news_key" translatable="false">max news</string>
+    <!-- preference label max news -->
+    <string name="settings_max_news_label">Set Maximum News</string>
+    <string name="settings_max_news_key" translatable="false">Max. News</string>
     <string name="settings_max_news_default" translatable="false">20</string>
 </resources>

@@ -133,7 +133,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         // set the thumbnail to display
         final String thumbnail = currentNews.getThumbnail();
         if(thumbnail.equals("")) {
-            holder.thumbnail.setVisibility(View.GONE);
+            // if no thumbnail set a default thumbnail.
+            holder.thumbnail.setImageResource(R.drawable.default_thumbnail);
         } else {
             Glide.with(context).load(thumbnail).override(400, 300)
                     .centerCrop().into(holder.thumbnail);
