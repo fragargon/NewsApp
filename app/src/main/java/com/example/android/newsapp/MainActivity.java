@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity implements
         String maxNews = sharedPreferences.getString(
                 getString(R.string.settings_max_news_key),
                 getString(R.string.settings_max_news_default));
+        // getString retrieve a String value for Order-By item
+        String orderBy = sharedPreferences.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default));
 
         // parse breaks apart the URI string
         Uri baseUri = Uri.parse(Constant.BASE_URL);
@@ -125,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements
         Uri.Builder builder = baseUri.buildUpon();
         // append query parameter
         builder.appendQueryParameter(Constant.KEY_SHOW_TAGS, Constant.KEY_CONTRIBUTOR);
-        builder.appendQueryParameter(Constant.KEY_ORDER_BY, Constant.KEY_NEWEST);
+        builder.appendQueryParameter(Constant.KEY_ORDER_BY, orderBy);
         builder.appendQueryParameter(Constant.KEY_SHOW_FIELD, Constant.KEY_ALL);
         builder.appendQueryParameter(Constant.KEY_PAGE_SIZE, maxNews);
         builder.appendQueryParameter(Constant.API_KEY, Constant.KEY_TEST);

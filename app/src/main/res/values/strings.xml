@@ -10,8 +10,23 @@
     <!-- settings menu -->
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">News Settings</string>
+
     <!-- preference label max news -->
-    <string name="settings_max_news_label">Set Maximum News</string>
-    <string name="settings_max_news_key" translatable="false">Max. News</string>
+    <string name="settings_max_news_string_label">Choose Maximum News (1 to 200)</string>
+    <string name="settings_max_news_key" translatable="false">MAX_NEWS</string>
     <string name="settings_max_news_default" translatable="false">20</string>
+
+    <!-- preference label order-by -->
+    <string name="settings_order_by_string_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">ORDER_BY</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_newest_value</string>
+    <!-- label order by newest -->
+    <string name="settings_order_by_newest_label">Newest News</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+    <!-- label order by oldest -->
+    <string name="settings_order_by_oldest_label">Oldest News</string>
+    <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+    <!-- label order by relevance -->
+    <string name="settings_order_by_relevance_label">Most Relevance News</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
 </resources>

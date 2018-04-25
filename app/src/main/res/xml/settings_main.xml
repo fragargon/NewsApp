@@ -8,6 +8,13 @@
         android:inputType="number"
         android:key="@string/settings_max_news_key"
         android:selectAllOnFocus="true"
-        android:title="@string/settings_max_news_label"/>
+        android:title="@string/settings_max_news_string_label"/>
+
+    <ListPreference
+        android:defaultValue="@string/settings_order_by_default"
+        android:entries="@array/settings_order_by_labels"
+        android:entryValues="@array/settings_order_by_value"
+        android:key="@string/settings_order_by_key"
+        android:title="@string/settings_order_by_string_label"/>
 
 </PreferenceScreen>
