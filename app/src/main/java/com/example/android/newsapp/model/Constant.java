@@ -28,7 +28,6 @@ public class Constant {
     public static final String KEY_SHOW_TAGS = "show-tags";
     public static final String KEY_CONTRIBUTOR = "contributor";
     public static final String KEY_ORDER_BY = "order-by";
-    public static final String KEY_NEWEST = "newest";
     public static final String KEY_SHOW_FIELD = "show-fields";
     public static final String KEY_ALL = "all";
     public static final String KEY_PAGE_SIZE = "page-size";

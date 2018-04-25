@@ -29,9 +29,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<List<News>>{
 
-    /* Tag for the log messages */
-    private static final String LOG_TAG = MainActivity.class.getName();
-
     /* Various initializer */
     private NewsAdapter newsAdapter;
     private EmptyRecyclerView recyclerView;
