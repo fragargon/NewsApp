@@ -43,5 +43,5 @@ ____________
 
 NewsApp stage2 - settings - noData
 
-![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg)
+![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_settings.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg)
 
