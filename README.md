@@ -39,4 +39,9 @@ NewsApp stage1 - NoData
 
 ![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1_no_data.jpg)
 
+____________
+
+NewsApp stage2 - settings - noData
+
+![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg)
 
