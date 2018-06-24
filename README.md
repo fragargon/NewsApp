@@ -43,5 +43,5 @@ ____________
 
 NewsApp stage2 - settings - noData
 
-<img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2.jpg" hspace="20"><img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_settings.jpg" hspace"20"><img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg" hspace="20">
+<img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2.jpg" hspace="20"><img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_settings.jpg" hspace="20"><img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg" hspace="20">
 
