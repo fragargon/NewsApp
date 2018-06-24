@@ -37,11 +37,11 @@ ____________
 
 NewsApp stage1 - NoData
 
-![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1_no_data.jpg)
+<img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1.jpg" hspace="20"><img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_1_no_data.jpg" hspace="20">
 
 ____________
 
 NewsApp stage2 - settings - noData
 
-![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_settings.jpg)![Alt Text](https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg)
+<img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2.jpg" hspace="20"><img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_settings.jpg" hspace"20"><img src="https://github.com/fragargon/NewsApp/raw/master/newsApp_stage_2_no_data.jpg" hspace="20">
 
